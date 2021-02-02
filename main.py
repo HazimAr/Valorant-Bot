@@ -38,4 +38,7 @@ async def on_message(message):
     elif msg.lower() == 'pog':
         await message.channel.send("I guess you are my little pogchamp... Come here")
 
+    elif msg.lower() == '69':
+        await message.channel.send("nice")
+
 client.run(TOKEN)
