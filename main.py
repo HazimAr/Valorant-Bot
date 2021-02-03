@@ -11,6 +11,8 @@ prefix = '.'
 
 sad_words = ["sad", "depressed", "unhappy", "angry", "bad", "trash", "die"]
 
+nik = ["nik", "niko"]
+
 def get_quote():
     response = requests.get("https://zenquotes.io/api/random")
     json_data = json.loads(response.text)
@@ -39,5 +41,8 @@ async def on_message(message):
 
     elif msg.lower() == '69':
         await message.channel.send("nice")
+    
+    elif any(word in msg for word in nik):
+        await message.channel.send("niko is a little bitch boi who thinks he is a god at coding like a ignorant fuck that he is \n lil dog water lookin head ass free freer then a costco sample. Man has less movement then steven hawking.")
 
 client.run(TOKEN)
