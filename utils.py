@@ -1,8 +1,8 @@
-from os.path    import join
-from os         import remove
+from os.path import join
+from os import remove
 
-from discord    import HTTPException
-from emoji      import emojize
+from discord import HTTPException
+from emoji import emojize
 
 import settings
 
@@ -18,7 +18,7 @@ def get_rel_path(rel_path):
 # if the emoji is not found, it will return the input instead
 def get_emoji(emoji_name, fail_silently=False):
     alias = emoji_name if emoji_name[0] == emoji_name[-1] == ":" \
-            else f":{emoji_name}:"
+        else f":{emoji_name}:"
     the_emoji = emojize(alias, use_aliases=True)
 
     if the_emoji == alias and not fail_silently:
@@ -31,7 +31,7 @@ def get_emoji(emoji_name, fail_silently=False):
 # Uses the channel name by default
 # If many matching channels are found, returns the first one
 def get_channel(client, value, attribute="name"):
-    channel = next((c for c in client.get_all_channels() 
+    channel = next((c for c in client.get_all_channels()
                     if getattr(c, attribute).lower() == value.lower()), None)
     if not channel:
         raise ValueError("No such channel")
@@ -49,7 +49,7 @@ async def send_in_channel(client, channel_name, *args):
 # Attempts to upload a file in a certain channel
 # content refers to the additional text that can be sent alongside the file
 # delete_after_send can be set to True to delete the file afterwards
-async def try_upload_file(client, channel, file_path, content=None, 
+async def try_upload_file(client, channel, file_path, content=None,
                           delete_after_send=False, retries=3):
     used_retries = 0
     sent_msg = None
@@ -66,6 +66,6 @@ async def try_upload_file(client, channel, file_path, content=None,
 
     if not sent_msg:
         await client.send_message(channel,
-                                 "Oops, something happened. Please try again.")
+                                  "Oops, something happened. Please try again.")
 
     return sent_msg
