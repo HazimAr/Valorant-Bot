@@ -23,4 +23,4 @@ class Nik(BaseCommand):
         rainbow = get_emoji(':rainbow:')
         msg = f'{niko} is {insult} also he is {rainbow}'
         await message.channel.send(msg)
-        await message.channel.send(file=discord.File('.\assets\doodoo_code.png'))
+        await message.channel.send(file=discord.File('./assets/doodoo_code.png'))
