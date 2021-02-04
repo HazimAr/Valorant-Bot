@@ -1,5 +1,7 @@
 from commands.base_command import BaseCommand
+from utils import get_emoji
 
+import asyncio
 import discord
 
 
@@ -8,15 +10,13 @@ import discord
 # but in lowercase
 
 # So, a command class named Random will generate a 'random' command
-class Receipt(BaseCommand):
+class Banana(BaseCommand):
 
     def __init__(self):
-        description = "Provides a reciept of all purchases made by that user"
-        params = ['user']
+        description = "Sends a banana emoji"
+        params = []
         super().__init__(description, params)
 
     async def handle(self, params, message, client):
-        user = params[0]
-
-        msg = discord.embed(title=f'Thank you {user} for purchasing from BlockTrap')
-        await message.author.send(embed=msg)
+        msg = get_emoji(':banana:')
+        await message.channel.send(msg)

@@ -2,6 +2,8 @@ from commands.base_command import BaseCommand
 from utils import get_emoji
 from random import randint
 
+import discord
+
 
 # Your friendly example event
 # Keep in mind that the command name will be derived from the class name

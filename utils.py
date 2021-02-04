@@ -67,5 +67,4 @@ async def try_upload_file(client, channel, file_path, content=None,
     if not sent_msg:
         await client.send_message(channel,
                                   "Oops, something happened. Please try again.")
-
     return sent_msg
