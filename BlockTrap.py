@@ -9,9 +9,6 @@ from events.base_event import BaseEvent
 from events import *
 from multiprocessing import Process
 
-from time import sleep
-from threading import Timer
-
 # Set to remember if the bot is already running, since on_ready may be called
 # more than once on reconnects
 this = sys.modules[__name__]
@@ -19,6 +16,7 @@ this.running = False
 
 # Scheduler that will be used to manage events
 sched = AsyncIOScheduler()
+
 
 ###############################################################################
 
@@ -66,26 +64,10 @@ def main():
             except:
                 print("Error while handling message", flush=True)
                 raise
-        
+
     @client.event
     async def on_message(message):
-        if message.author == client.user:
-            return
-        
-        if message.author.id == 462102455132356608:
-            async def delete():
-                await message.delete()
-            
-            e = Timer(2, delete)
-            e.start()
-            msg = f'shut the fuck up. <@462102455132356608>'
-            Bot_msg = await message.channel.send(msg)
-
-            async def bot_delete():
-                await Bot_msg.delete()
-                
-            t = Timer(2, bot_delete)
-            t.start()
+        await common_handle_message(message)
 
     @client.event
     async def on_message_edit(before, after):
@@ -96,7 +78,6 @@ def main():
 
 ###############################################################################
 
+
 if __name__ == "__main__":
     main()
-
-
