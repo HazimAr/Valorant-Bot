@@ -24,4 +24,4 @@ class ExampleEvent(BaseEvent):
             msg = f"It is {now.hour}:{now.minute}"
 
         channel = get_channel(client, "bot-test")
-        await channel.send(msg)
+        
