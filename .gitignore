@@ -1,3 +1,5 @@
+settings.py
+.gitignore
 
 # Created by https://www.gitignore.io/api/python
 
@@ -101,6 +103,5 @@ venv.bak/
 
 # mypy
 .mypy_cache/
-
 
 # End of https://www.gitignore.io/api/python
