@@ -1,3 +1,7 @@
+from googletrans import Translator
+from time import sleep
+import requests
+import json
 from os.path import join
 from os import remove
 
@@ -68,3 +72,29 @@ async def try_upload_file(client, channel, file_path, content=None,
         await client.send_message(channel,
                                   "Oops, something happened. Please try again.")
     return sent_msg
+
+
+def fact_of_the_day(api_url):
+
+    translator = Translator()
+
+
+    def fetch():
+        response = requests.get(api_url)
+        response = json.loads(response.text)
+
+        return response
+
+
+    response = fetch()
+
+    if response['language'] != 'en':
+        response = translator.translate(
+            response['text'],
+            src=response['language']
+        )
+        useless_fact = response.text
+    else:
+        useless_fact = response['text']
+
+    return useless_fact
