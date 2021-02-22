@@ -10,3 +10,5 @@ six
 tzlocal
 websockets
 googletrans
+requests
+json
