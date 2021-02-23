@@ -1,10 +1,9 @@
 from commands.base_command import BaseCommand
 from utils import get_emoji
 from utils import fact_of_the_day
-
+import traceback
 import asyncio
 import discord
-
 
 # Your friendly example event
 # Keep in mind that the command name will be derived from the class name
@@ -26,10 +25,11 @@ class Fact(BaseCommand):
             msg = f'Fact: {fact} {smile}'
             await message.channel.send(msg)
         except:
+            traceback.print_exc()
             await message.channel.send("Please provide a valid parameter <type>, today and random are valid parameters.")
         
 
-
+g
         
 
 
