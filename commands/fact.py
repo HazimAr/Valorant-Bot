@@ -27,6 +27,7 @@ class Fact(BaseCommand):
             await message.channel.send(msg)
         except:
             await message.channel.send("Please provide a valid parameter <type>, today and random are valid parameters.")
+        
 
 
         
