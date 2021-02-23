@@ -83,7 +83,6 @@ def fact_of_the_day(api_url):
         response = requests.get(api_url)
         print(response)
         response = json.loads(response.text)
-        print(response)
         return response
 
     response = fetch()
