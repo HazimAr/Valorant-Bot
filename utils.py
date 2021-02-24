@@ -74,17 +74,16 @@ async def try_upload_file(client, channel, file_path, content=None,
     return sent_msg
 
 
+def fetch(api_url):
+    response = requests.get(api_url)
+    print(response)
+    response = json.loads(response.text)
+    return response
+
 def fact_of_the_day(api_url):
 
     translator = Translator()
-
-    def fetch():
-        response = requests.get(api_url)
-        print(response)
-        response = json.loads(response.text)
-        return response
-
-    response = fetch()
+    response = fetch(api_url)
 
     if response['language'] != 'en':
         response = translator.translate(

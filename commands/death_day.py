@@ -1,6 +1,6 @@
 from commands.base_command import BaseCommand
 from utils import get_emoji
-from random import randint
+
 
 import asyncio
 import discord
