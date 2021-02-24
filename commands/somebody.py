@@ -24,5 +24,5 @@ class Somebody(BaseCommand):
         random_member = random.choice(list(member_list))
         random_member_id = f'<@{random_member.id}>'
 
-        msg = f"{random_member_id} has been chosen by the gods to break free of this tyrannic overlord named BlockTrapKing"
+        msg = f"{random_member_id} has been chosen by the gods to be annoyed"
         await message.channel.send(msg)
