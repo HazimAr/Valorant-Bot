@@ -10,7 +10,7 @@ import discord
 # but in lowercase
 
 # So, a command class named Random will generate a 'random' command
-class Nik(BaseCommand):
+class Niko(BaseCommand):
 
     def __init__(self):
         description = "Niko is <insult>"
