@@ -78,7 +78,6 @@ def fact_of_the_day(api_url):
 
     translator = Translator()
 
-
     def fetch():
         response = requests.get(api_url)
         print(response)
