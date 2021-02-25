@@ -12,7 +12,7 @@ import discord
 # So, a command class named Random will generate a 'random' command
 
 
-class Qotd(BaseCommand):
+class Quote(BaseCommand):
 
     def __init__(self):
         description = "Generates a quote based on <type>, (today) and (random) are valid parameters"

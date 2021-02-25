@@ -1,11 +1,11 @@
 from events.base_event import BaseEvent
-from utils import fact_of_the_day, get_channel, get_emoji
+from utils import fetch, get_channel, get_emoji
 from datetime import datetime
 
 # Your friendly example event
 # You can name this class as you like, but make sure to set BaseEvent
 # as the parent class
-class FactEveryday(BaseEvent):
+class QuoteEveryday(BaseEvent):
     
 
     def __init__(self):
@@ -20,12 +20,16 @@ class FactEveryday(BaseEvent):
         if now.hour == 15:
             channel = get_channel(client, "fact-of-the-day")
 
-            api_url = f'https://uselessfacts.jsph.pl/today.json'
+            api_url = f'https://zenquotes.io/api/today'
             smile = get_emoji(':smile:')
 
-            fact = fact_of_the_day(api_url)
-            msg = f'Fact: {fact} {smile}'
+            response = fetch(api_url)
+
+            quote = response[0]['q']
+            author = response[0]['a']
+
+            msg = f'{quote} -{author} {smile}'
             await channel.send(msg)
-        
+    
 
         
