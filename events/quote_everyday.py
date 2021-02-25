@@ -17,8 +17,8 @@ class QuoteEveryday(BaseEvent):
     async def run(self, client):
         now = datetime.now()
         print(now)
-        if now.hour == 15:
-            channel = get_channel(client, "fact-of-the-day")
+        if now.hour == 13:
+            channel = get_channel(client, "quote-of-the-day")
 
             api_url = f'https://zenquotes.io/api/today'
             smile = get_emoji(':smile:')
