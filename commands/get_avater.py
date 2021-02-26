@@ -11,9 +11,14 @@ class Av(BaseCommand):
         super().__init__(description, params)
 
     async def handle(self, params, message, client):
-        user = client.get_user(int(params[0].split("<@!",)[1].split(">")[0]))
+        try:
+            user = client.get_user(
+                int(params[0].split("<@!&",)[1].split(">")[0]))
+        except:
+            user = client.get_user(int(params[0]))
         print(user)
-        link = user.avatar_url_as()
+        print(params[0])
+        link = user.avatar_url_as(format="png", static_format="png")
         print(link)
         msg = f"{user}'s link to their avater is {link}"
         await message.channel.send(msg)
