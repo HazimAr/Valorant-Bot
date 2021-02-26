@@ -15,3 +15,4 @@ quote = response[0]['q']
 author = response[0]['a']
 
 msg = f'{quote} -{author}'
+print(msg)

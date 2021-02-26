@@ -5,13 +5,6 @@ import discord
 
 import random
 
-# Your friendly example event
-# Keep in mind that the command name will be derived from the class name
-# but in lowercase
-
-# So, a command class named Random will generate a 'random' command
-
-
 class Somebody(BaseCommand):
 
     def __init__(self):
