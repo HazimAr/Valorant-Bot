@@ -30,5 +30,6 @@ async def handle_command(command, args, message, bot_client):
     else:
         try:
             await message.delete()
+            await cmd_obj.handle(args, message, bot_client)
         except:
             await cmd_obj.handle(args, message, bot_client)
