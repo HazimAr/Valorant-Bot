@@ -13,7 +13,7 @@ class Av(BaseCommand):
     async def handle(self, params, message, client):
         try:
             user = client.get_user(
-                int(params[0].split("<@!&",)[1].split(">")[0]))
+                int(params[0].split("<@!",)[1].split(">")[0]))
         except:
             user = client.get_user(int(params[0]))
         print(user)
