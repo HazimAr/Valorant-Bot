@@ -13,9 +13,10 @@ class Somebody(BaseCommand):
         super().__init__(description, params)
 
     async def handle(self, params, message, client):
-        member_list = client.get_all_members()
+        member_list = message.guild.members
         random_member = random.choice(list(member_list))
         random_member_id = f'<@{random_member.id}>'
+        print(list(member_list))
 
         msg = f"{random_member_id} has been chosen by the gods to be annoyed"
         await message.channel.send(msg)
