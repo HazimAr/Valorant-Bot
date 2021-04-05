@@ -2,10 +2,10 @@ import os
 
 # The prefix that will be used to parse commands.
 # It doesn't have to be a single character!
-COMMAND_PREFIX = "b!"
+COMMAND_PREFIX = "v!"
 
 # The bot token. Keep this secret!
-BOT_TOKEN = "ODA2NjM3NjM4NjY0MDYwOTI5.YBsV1w.oNgELJmB_C9-feoMsS1lLxgdj8A"
+BOT_TOKEN = "ODI4NDc1NTk5MDMwOTc2NTEy.YGqIBw.JFPgF1oKBUMri8E_FS5gkyBkNrA"
 # BOT_TOKEN = "NzQ2NzgzOTQ4NTYyMTA0MzUx.X0FWvw.vmzwSaqYKl-G2opC-n4vU5QZV_E"
 
 # The now playing game. Set this to anything false-y ("", None) to disable it

@@ -1,4 +1,3 @@
-from googletrans import Translator
 from time import sleep
 import requests
 import json
@@ -7,6 +6,7 @@ from os import remove
 
 from discord import HTTPException
 from emoji import emojize
+import random
 
 import settings
 
@@ -74,24 +74,39 @@ async def try_upload_file(client, channel, file_path, content=None,
     return sent_msg
 
 
-def fetch(api_url):
-    response = requests.get(api_url)
-    print(response)
-    response = json.loads(response.text)
-    return response
+def randomize_teams(message):
+    vc = message.author.voice.channel
+    players = vc.members
+    
+    team_one_choose = True
 
-def fact_of_the_day(api_url):
+    team1 = []
+    team2 = []
 
-    translator = Translator()
-    response = fetch(api_url)
+    less_players = bool(random.getrandbits(1))
 
-    if response['language'] != 'en':
-        response = translator.translate(
-            response['text'],
-            src=response['language']
-        )
-        useless_fact = response.text
-    else:
-        useless_fact = response['text']
+    for i in range(len(players)):
+        random1 = random.choice(players)
 
-    return useless_fact
+        if less_players:
+            if team_one_choose:
+                team1.append(f"<@!{random1.id}>") 
+                team_one_choose = False
+            else:
+                team2.append(f"<@!{random1.id}>")
+                team_one_choose = True
+
+        else:
+            if team_one_choose:
+                team2.append(f"<@!{random1.id}>")
+                team_one_choose = False
+
+            else:
+                team1.append(f"<@!{random1.id}>")
+                team_one_choose = True
+        
+        players.remove(random1)
+    
+    msg = f"Attacking: {team1}\n\nDefending: {team2}"
+
+    return msg

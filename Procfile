@@ -1,1 +1,1 @@
-worker: python BlockTrap.py
+worker: python run.py

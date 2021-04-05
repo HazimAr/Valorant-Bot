@@ -23,5 +23,5 @@ class ExampleEvent(BaseEvent):
         else:
             msg = f"It is {now.hour}:{now.minute}"
 
-        channel = get_channel(client, "bot-test")
+        
         
