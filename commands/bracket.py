@@ -1,10 +1,10 @@
 from commands.base_command import BaseCommand
 import random
 
-class Map(BaseCommand):
+class Bracket(BaseCommand):
 
     def __init__(self):
-        description = "Makes a bracked based of a list"
+        description = "Makes a bracket as even as possible based off of a list"
         params = None
         super().__init__(description, params)
 
