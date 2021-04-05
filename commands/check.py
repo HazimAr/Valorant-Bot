@@ -7,12 +7,20 @@ class Check(BaseCommand):
 
     def __init__(self):
         description = "Checks valorant stats"
-        params = ["user"]
+        params = None
         super().__init__(description, params)
 
     async def handle(self, params, message, client):
+        channel = message.channel
+        def check(m):
+            return m.author.id == message.author.id and m.channel == channel
+
+        msg = f"Please enter the valorant username you are trying to search\nExample: HazAr#1639"
+        await message.channel.send(msg)
+
+        user = await client.wait_for("message", check=check, timeout=600.0).content
         try:
-            user = params[0].split("#")[0]; tag = params[0].split("#")[1]
+            user = user.split("#")[0]; tag = user.split("#")[1]
         except:
             msg = "Please send the user in this format **username**#**tag**"
             await message.channel.send(msg)

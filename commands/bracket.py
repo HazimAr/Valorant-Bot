@@ -58,7 +58,6 @@ class Bracket(BaseCommand):
                     temp_key = j
                     users.remove(temp_key)
                     
-
             bracket.append([[player_one_key,users_and_rank[player_one_key]],[temp_key,users_and_rank[temp_key]]])
                
         await message.channel.send(msg)
