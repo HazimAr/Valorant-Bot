@@ -146,7 +146,7 @@ def get_user_rank(message, user, tag):
     try:
         Wait(5, rank_xpath)
     except:
-        msg = f"{user+tag} has either never played ranked or is a private account"
+        msg = f"{user+tag} has either never played ranked or is a private account\n If you are the owner of this account and would like to make your account public please click here\nhttps://account.tracker.gg/auth/search?provider=riot&returnUrl=https://tracker.gg/auth/search/callback&state=valorant"
         return msg
         
     rank = driver.find_element_by_xpath(rank_xpath).text
