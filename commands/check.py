@@ -18,9 +18,11 @@ class Check(BaseCommand):
         msg = f"Please enter the valorant username you are trying to search\nExample: HazAr#1639"
         await message.channel.send(msg)
 
-        user = await client.wait_for("message", check=check, timeout=600.0).content
+        user = await client.wait_for("message", check=check, timeout=600.0)
+        user_message = user.content
         try:
-            user = user.split("#")[0]; tag = user.split("#")[1]
+            user = user_message.split("#")[0]; tag = user_message.split("#")[1]
+            print(user, tag)
         except:
             msg = "Please send the user in this format **username**#**tag**"
             await message.channel.send(msg)
