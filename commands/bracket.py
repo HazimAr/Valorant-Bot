@@ -12,12 +12,13 @@ class Bracket(BaseCommand):
 
     async def handle(self, params, message, client):
         msg = ""
-        user = ["Sakuraツ#juice", "Sakuraツ#juice", "Sakuraツ#juice", "Sakuraツ#juice", "Sakuraツ#juice"]
+        users = ["Sakuraツ#juice", "Sakuraツ#juice", "Sakuraツ#juice", "Sakuraツ#juice", "Sakuraツ#juice"]
 
-        for user in user:
-            rank = utils.get_user_rank(user)
+        for i in users:
+            user = user.split("#")[0]; tag = user.split("#")[1]
+            rank = utils.get_user_rank(user, tag)
             if type(rank) == int:
                 msg += f"{rank}, "
-        
+
 
         await message.channel.send(msg)

@@ -121,7 +121,7 @@ def randomize_teams(message):
     return msg
 
 
-def get_user_rank(message, user, tag):
+def get_user_rank(user, tag):
     web = f"https://tracker.gg/valorant/profile/riot/{user}%23{tag}/overview?playlist=competitive"
     
     chrome_options = Options()
@@ -152,6 +152,5 @@ def get_user_rank(message, user, tag):
     rank = driver.find_element_by_xpath(rank_xpath).text
     driver.quit()
     msg = settings.ranks[rank]
-    print(msg)
 
     return msg
