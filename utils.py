@@ -145,8 +145,7 @@ def get_user_rank(message, user, tag):
         Wait(5, rank_xpath)
     except:
         msg = f"{user+tag} has either never played ranked or is a private account"
-        await message.channel.send(msg)
-        return
+        return msg
         
     rank = driver.find_element_by_xpath(rank_xpath).text
     driver.quit()
