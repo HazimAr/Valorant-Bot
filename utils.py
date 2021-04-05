@@ -75,8 +75,8 @@ async def try_upload_file(client, channel, file_path, content=None,
 
 
 def randomize_teams(message):
-    vc = message.author.voice.channel
     try:
+        vc = message.author.voice.channel
         players = vc.members
     except:
         msg = "You are currently not connected to a voice channel. To use this command please connect to a voice channel"
