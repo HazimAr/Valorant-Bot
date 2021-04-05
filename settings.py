@@ -16,7 +16,8 @@ BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 DEV = True
 
 ranks = {
-
+    "Unrated": 0,
+    
     "Iron 1": 50,
     "Iron 2": 150,
     "Iron 3": 250,

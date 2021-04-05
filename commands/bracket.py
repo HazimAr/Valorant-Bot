@@ -1,6 +1,5 @@
 from commands.base_command import BaseCommand
 import random
-
 import utils
 
 class Bracket(BaseCommand):
@@ -12,7 +11,7 @@ class Bracket(BaseCommand):
 
     async def handle(self, params, message, client):
         msg = ""
-        users = ["Sakuraツ#juice", "SyfeFPS#8099", "SoulPsych0#uwu", "tunaflip#uwu", "Misaki#levi"]
+        users = ["Sakuraツ#juice", "SyfeFPS#8099", "SoulPsych0#uwu", "tunaflip#uwu", "Misaki#levi", "TayTayy#4828", "swage#0424","milkyway#MILF"]
         users_rank = []
         users_and_rank = {}
 
@@ -47,19 +46,20 @@ class Bracket(BaseCommand):
         temp_key = ""
 
         for i in range(len(users_and_rank.keys()) // 2):
-            users_and_rank_keys = list(users_and_rank.keys())
-            player_one_key = users_and_rank_keys[i]
-            users_and_rank_keys.remove(player_one_key)
-            users_and_rank_keys = list(users_and_rank.keys())
+            users_original = list(users_and_rank.keys())
+            users = list(users_and_rank.keys())
+            player_one_key = users[i]
+            users.remove(player_one_key)
 
-            temp_key = users_and_rank_keys[i+1]
-
-            for i in users_and_rank_keys:
-                if (average_user_mmr - users_and_rank[i]) < (average_user_mmr - users_and_rank[temp_key]):
-                    temp_key = i
+            temp_key = users[i + 1]
+            
+            for j in range(len(users) // 2):
+                if (average_user_mmr - users_and_rank[users_original[j]]) < (average_user_mmr - users_and_rank[users_original[temp_key]]):
+                    temp_key = j
+                    users.remove(temp_key)
+                    
 
             bracket.append([[player_one_key,users_and_rank[player_one_key]],[temp_key,users_and_rank[temp_key]]])
                
-        print(bracket)
-            
         await message.channel.send(msg)
+        await message.channel.send(bracket)
