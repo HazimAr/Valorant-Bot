@@ -121,9 +121,10 @@ def randomize_teams(message):
     return msg
 
 
-def get_user_rank(user, tag):
-    web = f"https://tracker.gg/valorant/profile/riot/{user}%23{tag}/overview?playlist=competitive"
-    if not settings.DEV:
+def get_user_rank(user, tag):  
+    if settings.DEV:
+        driver = webdriver.Chrome("D:/Code/Discord/ValorantBot/chromedriver")
+    else:
         chrome_options = Options()
         chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
         chrome_options.add_argument("--headless")
@@ -131,9 +132,8 @@ def get_user_rank(user, tag):
         chrome_options.add_argument("--no-sandbox")
 
         driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-    else:
-        driver = webdriver.Chrome("D:/Code/Discord/ValorantBot/chromedriver")
 
+    web = f"https://tracker.gg/valorant/profile/riot/{user}%23{tag}/overview?playlist=competitive"
     driver.get(web)
 
     rank_xpath = "/html/body/div[1]/div[2]/div[2]/div/main/div[2]/div[3]/div[3]/div[4]/div[2]/div[2]/div/div[1]/div[1]/span[2]"

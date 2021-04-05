@@ -21,7 +21,7 @@ class Check(BaseCommand):
         await message.channel.send(msg)
 
         try:
-            msg = utils.get_user_rank(message, user, tag)
+            msg = utils.get_user_rank(user, tag)
         except:
             msg = "An error occurred"
         await message.channel.send(msg)
