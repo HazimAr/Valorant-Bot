@@ -1,5 +1,6 @@
 from commands.base_command import BaseCommand
 import random
+from settings import ranks
 
 class Check(BaseCommand):
 
@@ -56,6 +57,6 @@ class Check(BaseCommand):
             
         rank = driver.find_element_by_xpath(rank_xpath).text
         driver.quit()
-        msg = f"{params[0]} is {rank}"
+        msg = f"{params[0]} is {rank} or {ranks[rank]}"
         print(msg)
         await message.channel.send(msg)
