@@ -123,7 +123,7 @@ def randomize_teams(message):
 
 def get_user_rank(user, tag):
     web = f"https://tracker.gg/valorant/profile/riot/{user}%23{tag}/overview?playlist=competitive"
-    if settings.DEV:
+    if not settings.DEV:
         chrome_options = Options()
         chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
         chrome_options.add_argument("--headless")
