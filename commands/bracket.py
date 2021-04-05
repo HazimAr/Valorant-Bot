@@ -1,6 +1,8 @@
 from commands.base_command import BaseCommand
 import random
 
+import utils
+
 class Bracket(BaseCommand):
 
     def __init__(self):
@@ -9,9 +11,13 @@ class Bracket(BaseCommand):
         super().__init__(description, params)
 
     async def handle(self, params, message, client):
-                
-        map = random.choice(["Ascent‎", "Bind", "Haven", "Split", "Icebox"])
+        msg = ""
+        user = ["Sakuraツ#juice", "Sakuraツ#juice", "Sakuraツ#juice", "Sakuraツ#juice", "Sakuraツ#juice"]
+
+        for user in user:
+            rank = utils.get_user_rank(user)
+            if type(rank) == int:
+                msg += f"{rank}, "
         
-        msg = f"Map: {map}"
 
         await message.channel.send(msg)

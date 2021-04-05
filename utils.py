@@ -151,7 +151,7 @@ def get_user_rank(message, user, tag):
         
     rank = driver.find_element_by_xpath(rank_xpath).text
     driver.quit()
-    msg = f"{user+tag} is {rank} or around {settings.ranks[rank]} mmr"
+    msg = settings.ranks[rank]
     print(msg)
 
     return msg
