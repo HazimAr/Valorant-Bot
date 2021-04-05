@@ -9,7 +9,6 @@ class Check(BaseCommand):
         super().__init__(description, params)
 
     async def handle(self, params, message, client):
-        print(params[0].split("#"))
         try:
             user = params[0].split("#")[0]; tag = params[0].split("#")[1]
         except:
