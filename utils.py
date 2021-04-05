@@ -76,7 +76,11 @@ async def try_upload_file(client, channel, file_path, content=None,
 
 def randomize_teams(message):
     vc = message.author.voice.channel
-    players = vc.members
+    try:
+        players = vc.members
+    except:
+        msg = "You are currently not connected to a voice channel. To use this command please connect to a voice channel"
+        return msg
     
     team_one_choose = True
 
@@ -149,7 +153,7 @@ def get_user_rank(message, user, tag):
         
     rank = driver.find_element_by_xpath(rank_xpath).text
     driver.quit()
-    msg = f"{user+tag} is {rank} or {settings.ranks[rank]}"
+    msg = f"{user+tag} is {rank} or around {settings.ranks[rank]}mmr"
     print(msg)
 
     return msg

@@ -10,7 +10,12 @@ class TeamRoll(BaseCommand):
 
     async def handle(self, params, message, client):        
         vc = message.author.voice.channel
-        players = vc.members
+        try:
+            players = vc.members
+        except:
+            msg = "You are currently not connected to a voice channel. To use this command please connect to a voice channel"
+            await message.channel.send(msg)
+            return
         
         msg = ""
 
