@@ -2,7 +2,12 @@ from time import sleep
 import requests
 import json
 from os.path import join
-from os import remove
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
+import os
 
 from discord import HTTPException
 from emoji import emojize
@@ -66,7 +71,7 @@ async def try_upload_file(client, channel, file_path, content=None,
             used_retries += 1
 
     if delete_after_send:
-        remove(file_path)
+        os.remove(file_path)
 
     if not sent_msg:
         await client.send_message(channel,
@@ -118,13 +123,6 @@ def randomize_teams(message):
 
 def get_user_rank(message, user, tag):
     web = f"https://tracker.gg/valorant/profile/riot/{user}%23{tag}/overview?playlist=competitive"
-
-    from selenium import webdriver
-    from selenium.webdriver.common.by import By
-    from selenium.webdriver.support.ui import WebDriverWait
-    from selenium.webdriver.support import expected_conditions as EC
-    from selenium.webdriver.chrome.options import Options
-    import os
     
     chrome_options = Options()
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
