@@ -17,31 +17,31 @@ DEV = True
 
 ranks = {
 
-    "iron 1": 50,
-    "iron 2": 150,
-    "iron 3": 250,
+    "Iron 1": 50,
+    "Iron 2": 150,
+    "Iron 3": 250,
 
-    "bronze 1": 350,
-    "bronze 2": 450,
-    "bronze 3": 550,
+    "Bronze 1": 350,
+    "Bronze 2": 450,
+    "Bronze 3": 550,
  
-    "silver 1": 650,
-    "silver 2": 750,
-    "silver 3": 850,
+    "Silver 1": 650,
+    "Silver 2": 750,
+    "Silver 3": 850,
 
-    "gold 1": 950,
-    "gold 2": 1050,
-    "gold 3": 1150,
+    "Gold 1": 950,
+    "Gold 2": 1050,
+    "Gold 3": 1150,
 
-    "plat 1": 1250,
-    "plat 2": 1350,
-    "plat 3": 1450,
+    "Plat 1": 1250,
+    "Plat 2": 1350,
+    "Plat 3": 1450,
 
-    "diamond 1": 1550,
-    "diamond 2": 1650,
-    "diamond 3": 1750,
+    "Diamond 1": 1550,
+    "Diamond 2": 1650,
+    "Diamond 3": 1750,
  
-    "immortal": 1850,
-    "radiant": 1950,
+    "Immortal": 1850,
+    "Radiant": 1950,
 
 }
