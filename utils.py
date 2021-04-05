@@ -123,7 +123,9 @@ def randomize_teams(message):
 
 def get_user_rank(user, tag):  
     if settings.DEV:
-        driver = webdriver.Chrome("D:/Code/Discord/ValorantBot/chromedriver")
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
+        driver = webdriver.Chrome(executable_path="D:/Code/Discord/ValorantBot/chromedriver", chrome_options=chrome_options)
     else:
         chrome_options = Options()
         chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -149,6 +151,7 @@ def get_user_rank(user, tag):
     try:
         Wait(5, rank_xpath)
     except:
+        driver.quit()
         msg = f"{user+tag} has either never played ranked or their account is private\nIf you are the owner of this account and would like to make your account public please click here\nhttps://account.tracker.gg/auth/search?provider=riot&returnUrl=https://tracker.gg/auth/search/callback&state=valorant"
         return msg
         
