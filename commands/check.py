@@ -20,5 +20,8 @@ class Check(BaseCommand):
         msg = "Please allow up to 5 seconds for us to look up the user"
         await message.channel.send(msg)
 
-        msg = utils.get_user_rank(message, user, tag)
+        try:
+            msg = utils.get_user_rank(message, user, tag)
+        except:
+            msg = "An error occurred"
         await message.channel.send(msg)
