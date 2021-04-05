@@ -15,7 +15,7 @@ class Bracket(BaseCommand):
         users = ["Sakuraツ#juice", "Sakuraツ#juice", "Sakuraツ#juice", "Sakuraツ#juice", "Sakuraツ#juice"]
 
         for i in users:
-            user = user.split("#")[0]; tag = user.split("#")[1]
+            user = i.split("#")[0]; tag = user.split("#")[1]
             rank = utils.get_user_rank(user, tag)
             if type(rank) == int:
                 msg += f"{rank}, "
