@@ -13,7 +13,7 @@ NOW_PLAYING = COMMAND_PREFIX + "help"
 # Base directory. Feel free to use it if you want.
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
-DEV = False
+DEV = True
 
 ranks = {
 

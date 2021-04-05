@@ -16,6 +16,7 @@ class Bracket(BaseCommand):
         users_rank = []
         users_and_rank = {}
         for i in users:
+            await message.channel.send(f"Checking {i}")
             user = i.split("#")[0]; tag = i.split("#")[1]
             rank = utils.get_user_rank(user, tag)
             if type(rank) == int:
