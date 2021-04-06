@@ -11,6 +11,6 @@ class Teams(BaseCommand):
 
     async def handle(self, params, message, client):
 
-        team_msg = utils.randomize_teams(message)
+        team_msg = await utils.randomize_teams(message, client)
 
         await message.channel.send(team_msg)

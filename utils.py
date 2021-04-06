@@ -78,8 +78,12 @@ async def try_upload_file(client, channel, file_path, content=None,
                                   "Oops, something happened. Please try again.")
     return sent_msg
 
+async def move_list_to_channel(player_list, channel, client):
+    voice_channel = get_channel(client,channel)
+    for i in player_list:
+        await i.move_to(voice_channel)
 
-def randomize_teams(message):
+async def randomize_teams(message, client):
     try:
         vc = message.author.voice.channel
         players = vc.members
@@ -90,7 +94,10 @@ def randomize_teams(message):
     team_one_choose = True
 
     team1 = []
+    team1_move = []
+
     team2 = []
+    team2_move = []
 
     less_players = bool(random.getrandbits(1))
 
@@ -100,25 +107,31 @@ def randomize_teams(message):
         if less_players:
             if team_one_choose:
                 team1.append(random1.mention)
+                team1_move.append(random1)
                 team_one_choose = False
             else:
                 team2.append(random1.mention)
+                team2_move.append(random1)
                 team_one_choose = True
 
         else:
             if team_one_choose:
                 team2.append(random1.mention)
+                team2_move.append(random1)
                 team_one_choose = False
             else:
                 team1.append(random1.mention)
+                team1_move.append(random1)
                 team_one_choose = True
         
         players.remove(random1)
     
-    msg = f"You will be moved to your respected channels in 5 seconds\n\nAttacking: {team1}\nDefending: {team2}"
+    msg = f"You will be moved to your respected channels\n\nAttacking: {team1}\nDefending: {team2}"
+
+    await move_list_to_channel(team1_move, "attacking", client)
+    await move_list_to_channel(team2_move, "defending", client)
 
     return msg
-
 
 def get_user_rank(user, tag):  
     if settings.DEV:
@@ -159,3 +172,5 @@ def get_user_rank(user, tag):
     msg = settings.ranks[rank]
 
     return msg
+
+
