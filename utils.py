@@ -109,7 +109,6 @@ def randomize_teams(message):
             if team_one_choose:
                 team2.append(random1.mention)
                 team_one_choose = False
-
             else:
                 team1.append(random1.mention)
                 team_one_choose = True
