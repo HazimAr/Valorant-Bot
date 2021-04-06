@@ -10,6 +10,7 @@ class End(BaseCommand):
 
     async def handle(self, params, message, client):
         await utils.end(client)
-        msg = utils.get_emoji(":poop:")
+        msg = f"HazAr's crypto stocks tmr be like"
 
         await message.channel.send(msg)
+        await message.channel.send(utils.get_emoji(':chart_with_upwards_trend:'))
