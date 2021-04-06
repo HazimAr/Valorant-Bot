@@ -173,4 +173,14 @@ def get_user_rank(user, tag):
 
     return msg
 
+async def end(client):
+    lobby = get_channel(client, "lobby")
+    attacking = get_channel(client, "attacking")
+    defending = get_channel(client, "defending")
+
+    for i in attacking.members:
+        await i.move_to(lobby)
+    for j in defending.members:
+        await j.move_to(lobby)
+    
 
