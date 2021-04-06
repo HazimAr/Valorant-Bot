@@ -116,7 +116,7 @@ def randomize_teams(message):
         
         players.remove(random1)
     
-    msg = f"Attacking: {team1}\n\nDefending: {team2}"
+    msg = f"You will be moved to your respected channels in 5 seconds\n\nAttacking: {team1}\nDefending: {team2}"
 
     return msg
 
