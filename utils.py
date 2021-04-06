@@ -99,19 +99,19 @@ def randomize_teams(message):
 
         if less_players:
             if team_one_choose:
-                team1.append(f"<@!{random1.id}>") 
+                team1.append(random1.id.mention)
                 team_one_choose = False
             else:
-                team2.append(f"<@!{random1.id}>")
+                team2.append(random1.id.mention)
                 team_one_choose = True
 
         else:
             if team_one_choose:
-                team2.append(f"<@!{random1.id}>")
+                team2.append(random1.id.mention)
                 team_one_choose = False
 
             else:
-                team1.append(f"<@!{random1.id}>")
+                team1.append(random1.id.mention)
                 team_one_choose = True
         
         players.remove(random1)
