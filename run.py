@@ -17,7 +17,6 @@ this.running = False
 # Scheduler that will be used to manage events
 sched = AsyncIOScheduler()
 
-
 ###############################################################################
 
 def main():
@@ -79,7 +78,6 @@ def main():
     client.run(settings.BOT_TOKEN)
 
 ###############################################################################
-
 
 if __name__ == "__main__":
     main()
