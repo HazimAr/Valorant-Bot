@@ -80,9 +80,7 @@ async def try_upload_file(client, channel, file_path, content=None,
 
 async def move_list_to_channel(player_list, channel, client):
     voice_channel = client.get_channel(channel)
-    print(voice_channel)
     for i in player_list:
-        print(i)
         await i.move_to(voice_channel)
 
 async def randomize_teams(message, client):
@@ -130,8 +128,8 @@ async def randomize_teams(message, client):
     
     msg = f"You will be moved to your respected channels\n\nAttacking: {team1}\nDefending: {team2}"
 
-    await move_list_to_channel(team1_move, 833746651889270845, client)
-    await move_list_to_channel(team2_move, 833746701470007296, client)
+    await move_list_to_channel(team1_move, 833770771822280774, client)
+    await move_list_to_channel(team2_move, 833770785968488469, client)
 
     return msg
 
