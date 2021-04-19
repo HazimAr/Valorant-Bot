@@ -20,6 +20,7 @@ class Check(BaseCommand):
 
         user = await client.wait_for("message", check=check, timeout=600.0)
         user_message = user.content
+        print(user_message)
         try:
             user = user_message.split("#")[0]; tag = user_message.split("#")[1]
             print(user, tag)

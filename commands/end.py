@@ -12,5 +12,5 @@ class End(BaseCommand):
         await utils.end(client)
         msg = f"HazAr's crypto stocks tmr be like"
 
-        await message.channel.send(msg)
-        await message.channel.send(utils.get_emoji(':chart_with_upwards_trend:'))
+        # await message.channel.send(msg)
+        # await message.channel.send(utils.get_emoji(':chart_with_upwards_trend:'))
