@@ -57,7 +57,7 @@ def main():
     # The message handler for both new message and edits
     async def common_handle_message(message):
         text = message.content
-        if "lost" in text and "rank" in text:
+        if "lost" in text:
             await message.channel.send("f")
         if text.startswith(settings.COMMAND_PREFIX) and text != settings.COMMAND_PREFIX:
             cmd_split = text[len(settings.COMMAND_PREFIX):].split()
