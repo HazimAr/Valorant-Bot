@@ -8,6 +8,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from events.base_event import BaseEvent
 from events import *
 from multiprocessing import Process
+import random
 
 # Set to remember if the bot is already running, since on_ready may be called
 # more than once on reconnects
@@ -58,7 +59,7 @@ def main():
     async def common_handle_message(message):
         text = message.content
         if "lost" in text:
-            await message.channel.send("f")
+            await message.channel.send(random.choice(settings.LOST))
         if text.startswith(settings.COMMAND_PREFIX) and text != settings.COMMAND_PREFIX:
             cmd_split = text[len(settings.COMMAND_PREFIX):].split()
             try:

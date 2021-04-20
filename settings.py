@@ -44,5 +44,6 @@ ranks = {
  
     "Immortal": 1850,
     "Radiant": 1950,
-
 }
+
+LOST = ["get good", "get rekt", "mad bcos bad"]
