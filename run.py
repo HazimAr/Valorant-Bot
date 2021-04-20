@@ -58,10 +58,8 @@ def main():
     # The message handler for both new message and edits
     async def common_handle_message(message):
         text = message.content.lower()
-        # if "lost" in text or "rank" in text:
-        #     await message.channel.send(random.choice(settings.LOST))
-        # if "bitch" in text:
-        #     await message.channel.send("no u")
+        if "lost" in text or "rank" in text:
+            await message.channel.send(random.choice(settings.LOST))
         if text.startswith(settings.COMMAND_PREFIX) and text != settings.COMMAND_PREFIX:
             cmd_split = text[len(settings.COMMAND_PREFIX):].split()
             try:
