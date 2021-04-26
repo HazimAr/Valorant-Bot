@@ -5,7 +5,7 @@ import os
 COMMAND_PREFIX = "v!"
 
 # The bot token. Keep this secret!
-BOT_TOKEN = "ODI4NDc1NTk5MDMwOTc2NTEy.YGqIBw.JFPgF1oKBUMri8E_FS5gkyBkNrA"
+BOT_TOKEN = "Nzg1NjQ2MDAxOTg5ODc3ODAy.X8632w.Jm0tDkZ02MxV1mzLd4xSnuD-ZFo"
 
 # The now playing game. Set this to anything false-y ("", None) to disable it
 NOW_PLAYING = COMMAND_PREFIX + "help"
