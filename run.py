@@ -34,8 +34,16 @@ def main():
     async def on_ready():
         if this.running:
             return
-
         this.running = True
+
+        # for i in client.guilds:
+        #     for j in i.members:
+        #         try:
+        #             print(j)
+        #             await j.send(f"Hello, {j} how are you doing today :)")
+        #         except Exception as e:
+        #             print(e)
+                
 
         # Set the playing status
         if settings.NOW_PLAYING:
