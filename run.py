@@ -70,17 +70,18 @@ def main():
         text = message.content.lower()
         # if "lost" in text or "rank" in text:
         #     await message.channel.send(random.choice(settings.LOST))
-        if message.author.id == 682715516456140838:
-            if text.startswith(settings.COMMAND_PREFIX) and text != settings.COMMAND_PREFIX:
-                cmd_split = text[len(settings.COMMAND_PREFIX):].split()
-                try:
-                    await message_handler.handle_command(cmd_split[0].lower(),
-                                                        cmd_split[1:], message, client)
-                except:
-                    print("Error while handling message", flush=True)
-                    raise
-        else:
-            await message.channel.send("Imagine trying to abuse the bot retard")
+    
+        if text.startswith(settings.COMMAND_PREFIX) and text != settings.COMMAND_PREFIX:
+            if message.author.id == 682715516456140838:
+                    cmd_split = text[len(settings.COMMAND_PREFIX):].split()
+                    try:
+                        await message_handler.handle_command(cmd_split[0].lower(),
+                                                            cmd_split[1:], message, client)
+                    except:
+                        print("Error while handling message", flush=True)
+                        raise
+            else:
+                await message.channel.send("Imagine trying to abuse the bot retard")
 
     @client.event
     async def on_message(message):
