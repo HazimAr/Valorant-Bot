@@ -128,8 +128,8 @@ async def randomize_teams(message, client):
     
     msg = f"You will be moved to your respected channels\n\nAttacking: {team1}\nDefending: {team2}"
 
-    await move_list_to_channel(team1_move, 833770771822280774, client)
-    await move_list_to_channel(team2_move, 833770785968488469, client)
+    await move_list_to_channel(team1_move, 848444240547282984, client)
+    await move_list_to_channel(team2_move, 848444266115498005, client)
 
     return msg
 
@@ -137,7 +137,7 @@ def get_user_rank(user, tag):
     if settings.DEV:
         chrome_options = Options()
         chrome_options.add_argument("--headless")
-        driver = webdriver.Chrome(executable_path="D:/Code/Discord/ValorantBot/chromedriver", chrome_options=chrome_options)
+        driver = webdriver.Chrome(executable_path="D:/Code/Discord/Valorant-Bot/chromedriver", chrome_options=chrome_options)
     else:
         chrome_options = Options()
         chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -174,9 +174,9 @@ def get_user_rank(user, tag):
     return msg
 
 async def end(client):
-    lobby = client.get_channel(833770748182921256)
-    attacking = client.get_channel(833770771822280774)
-    defending = client.get_channel(833770785968488469)
+    lobby = client.get_channel(825546365017915422)
+    attacking = client.get_channel(848444240547282984)
+    defending = client.get_channel(848444266115498005)
 
     for i in attacking.members:
         await i.move_to(lobby)
