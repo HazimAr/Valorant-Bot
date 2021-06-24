@@ -127,8 +127,8 @@ async def randomize_teams(message, client):
     
     msg = f"You will be moved to your respected channels\n\nAttacking: {team1}\nDefending: {team2}"
 
-    await move_list_to_channel(team1_move, 857502728783396864, client)
-    await move_list_to_channel(team2_move, 857502754027864075, client)
+    await move_list_to_channel(team1_move, settings.attacking, client)
+    await move_list_to_channel(team2_move, settings.defending, client)
 
     return msg
 
@@ -174,9 +174,9 @@ def get_user_rank(user, tag):
     return msg
 
 async def end(client):
-    lobby = client.get_channel(857501540474683396)
-    attacking = client.get_channel(857502728783396864)
-    defending = client.get_channel(857502754027864075)
+    lobby = client.get_channel(settings.lobby)
+    attacking = client.get_channel(settings.attacking)
+    defending = client.get_channel(settings.defending)
 
     for i in attacking.members:
         await i.move_to(lobby)

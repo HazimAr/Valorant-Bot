@@ -141,3 +141,7 @@ starts_d = [["Is this CS:GO???",
                     ["X-ray vision", 
                     "You are only allowed to kill enemies through walls. You may peak them to see where they are, but to kill them, it must be through a wall. (credit: dehenergy)"]
                     ]
+
+lobby = 857501540474683396
+attacking = 857502728783396864
+defending = 857502754027864075
