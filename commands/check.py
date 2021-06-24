@@ -33,6 +33,6 @@ class Check(BaseCommand):
 
         try:
             msg = utils.get_user_rank(user, tag)
-        except:
-            msg = "An error occurred"
+        except Exception as e:
+            msg = e
         await message.channel.send(msg)

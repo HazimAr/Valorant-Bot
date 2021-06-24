@@ -58,8 +58,7 @@ async def send_in_channel(client, channel_name, *args):
 # Attempts to upload a file in a certain channel
 # content refers to the additional text that can be sent alongside the file
 # delete_after_send can be set to True to delete the file afterwards
-async def try_upload_file(client, channel, file_path, content=None,
-                          delete_after_send=False, retries=3):
+async def try_upload_file(client, channel, file_path, content=None, delete_after_send=False, retries=3):
     used_retries = 0
     sent_msg = None
 
@@ -128,8 +127,8 @@ async def randomize_teams(message, client):
     
     msg = f"You will be moved to your respected channels\n\nAttacking: {team1}\nDefending: {team2}"
 
-    await move_list_to_channel(team1_move, 848444240547282984, client)
-    await move_list_to_channel(team2_move, 848444266115498005, client)
+    await move_list_to_channel(team1_move, 857502728783396864, client)
+    await move_list_to_channel(team2_move, 857502754027864075, client)
 
     return msg
 
@@ -169,14 +168,15 @@ def get_user_rank(user, tag):
         
     rank = driver.find_element_by_xpath(rank_xpath).text
     driver.quit()
-    msg = settings.ranks[rank]
+    # msg = settings.ranks[rank]
+    msg = rank
 
     return msg
 
 async def end(client):
-    lobby = client.get_channel(825546365017915422)
-    attacking = client.get_channel(848444240547282984)
-    defending = client.get_channel(848444266115498005)
+    lobby = client.get_channel(857501540474683396)
+    attacking = client.get_channel(857502728783396864)
+    defending = client.get_channel(857502754027864075)
 
     for i in attacking.members:
         await i.move_to(lobby)

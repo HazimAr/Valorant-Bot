@@ -72,7 +72,7 @@ def main():
         #     await message.channel.send(random.choice(settings.LOST))
     
         if text.startswith(settings.COMMAND_PREFIX) and text != settings.COMMAND_PREFIX:
-            if message.author.id == 682715516456140838:
+            # if message.author.id == 682715516456140838:
                     cmd_split = text[len(settings.COMMAND_PREFIX):].split()
                     try:
                         await message_handler.handle_command(cmd_split[0].lower(),
@@ -80,8 +80,8 @@ def main():
                     except:
                         print("Error while handling message", flush=True)
                         raise
-            else:
-                await message.channel.send("Imagine trying to abuse the bot retard")
+            # else:
+            #     await message.channel.send("Imagine trying to abuse the bot retard")
 
     @client.event
     async def on_message(message):

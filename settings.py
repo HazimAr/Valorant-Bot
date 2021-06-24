@@ -5,7 +5,7 @@ import os
 COMMAND_PREFIX = "v!"
 
 # The bot token. Keep this secret!
-BOT_TOKEN = "ODQ4NDU1NzIzNDkwMDgyODE2.YLM3-A.9u75xrcZvEIzQIm8L7H6ZG-lXJU"
+BOT_TOKEN = "ODU3NTAxOTMwMjAzNjQzOTY0.YNQg5w.-s31HLSFQmt9btdV_al53NxpZ_Y"
 
 # The now playing game. Set this to anything false-y ("", None) to disable it
 NOW_PLAYING = COMMAND_PREFIX + "help"
@@ -13,7 +13,7 @@ NOW_PLAYING = COMMAND_PREFIX + "help"
 # Base directory. Feel free to use it if you want.
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
-DEV = False
+DEV = True
 
 ranks = {
     "Unrated": 0,
