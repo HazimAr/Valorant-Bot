@@ -34,16 +34,7 @@ def main():
     async def on_ready():
         if this.running:
             return
-        this.running = True
-
-        # for i in client.guilds:
-        #     for j in i.members:
-        #         try:
-        #             print(j)
-        #             await j.send(f"Hello, {j} how are you doing today :)")
-        #         except Exception as e:
-        #             print(e)
-                
+        this.running = True             
 
         # Set the playing status
         if settings.NOW_PLAYING:
@@ -68,20 +59,16 @@ def main():
         if message.author.bot:
             return
         text = message.content.lower()
-        # if "lost" in text or "rank" in text:
-        #     await message.channel.send(random.choice(settings.LOST))
     
         if text.startswith(settings.COMMAND_PREFIX) and text != settings.COMMAND_PREFIX:
-            # if message.author.id == 682715516456140838:
-                    cmd_split = text[len(settings.COMMAND_PREFIX):].split()
-                    try:
-                        await message_handler.handle_command(cmd_split[0].lower(),
-                                                            cmd_split[1:], message, client)
-                    except:
-                        print("Error while handling message", flush=True)
-                        raise
-            # else:
-            #     await message.channel.send("Imagine trying to abuse the bot retard")
+
+            cmd_split = text[len(settings.COMMAND_PREFIX):].split()
+            try:
+                await message_handler.handle_command(cmd_split[0].lower(),
+                                                    cmd_split[1:], message, client)
+            except:
+                print("Error while handling message", flush=True)
+                raise
 
     @client.event
     async def on_message(message):
