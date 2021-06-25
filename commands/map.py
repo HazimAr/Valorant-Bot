@@ -1,5 +1,6 @@
 from commands.base_command import BaseCommand
 import random
+import settings
 
 
 class Map(BaseCommand):
@@ -10,7 +11,7 @@ class Map(BaseCommand):
 
     async def handle(self, params, message, client):
 
-        map = random.choice(["Ascent‎", "Bind", "Haven", "Split", "Icebox"])
+        map = random.choice(settings.maps)
 
         msg = f"Map: {map}"
 

@@ -1,6 +1,7 @@
 from commands.base_command import BaseCommand
 import random
 import utils
+import settings
 
 
 class Start(BaseCommand):
@@ -13,7 +14,7 @@ class Start(BaseCommand):
 
         team_msg = await utils.randomize_teams(message, client)
 
-        map = random.choice(["Ascent‎", "Bind", "Haven", "Split", "Icebox"])
+        map = random.choice(settings.maps)
 
         msg = f"{team_msg}\n\nMap: {map}"
 

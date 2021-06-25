@@ -244,3 +244,5 @@ agents = [
     "Viper",
     "Yoru",
 ]
+
+maps = ["Ascent‎", "Bind", "Haven", "Split", "Icebox", "Breeze"]
