@@ -9,7 +9,7 @@ from datetime import datetime
 # as the parent class
 class ExampleEvent(BaseEvent):
     def __init__(self):
-        interval_minutes = 30  # Set the interval for this event
+        interval_minutes = 1 * 60 * 24 * 30  # Set the interval for this event
         super().__init__(interval_minutes)
 
     # Override the run() method
