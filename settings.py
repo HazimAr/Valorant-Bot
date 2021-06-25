@@ -246,3 +246,5 @@ agents = [
 ]
 
 maps = ["Ascent‎", "Bind", "Haven", "Split", "Icebox", "Breeze"]
+
+tourney_msg = 857871348906065920

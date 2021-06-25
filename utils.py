@@ -202,3 +202,8 @@ async def end(client):
         await i.move_to(lobby)
     for j in defending.members:
         await j.move_to(lobby)
+
+
+def team_randomization(player_list, length_of_each_sub_list):
+    for i in range(0, len(player_list), length_of_each_sub_list):
+        yield player_list[i : i + length_of_each_sub_list]

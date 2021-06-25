@@ -20,6 +20,7 @@ sched = AsyncIOScheduler()
 
 ###############################################################################
 
+
 def main():
     # Initialize the client
     print("Starting up...")
@@ -34,12 +35,14 @@ def main():
     async def on_ready():
         if this.running:
             return
-        this.running = True             
+        this.running = True
 
         # Set the playing status
         if settings.NOW_PLAYING:
             print("Setting NP game", flush=True)
-            await client.change_presence(activity=discord.Game(name=settings.NOW_PLAYING))
+            await client.change_presence(
+                activity=discord.Game(name=settings.NOW_PLAYING)
+            )
         print("Logged in!", flush=True)
 
         # Load all events
@@ -47,8 +50,9 @@ def main():
         n_ev = 0
         for ev in BaseEvent.__subclasses__():
             event = ev()
-            sched.add_job(event.run, 'interval', (client,),
-                          minutes=event.interval_minutes)
+            sched.add_job(
+                event.run, "interval", (client,), minutes=event.interval_minutes
+            )
             n_ev += 1
         sched.start()
         print(f"{n_ev} events loaded", flush=True)
@@ -58,13 +62,14 @@ def main():
         if message.author.bot:
             return
         text = message.content.lower()
-    
+
         if text.startswith(settings.COMMAND_PREFIX) and text != settings.COMMAND_PREFIX:
 
-            cmd_split = text[len(settings.COMMAND_PREFIX):].split()
+            cmd_split = text[len(settings.COMMAND_PREFIX) :].split()
             try:
-                await message_handler.handle_command(cmd_split[0].lower(),
-                                                    cmd_split[1:], message, client)
+                await message_handler.handle_command(
+                    cmd_split[0].lower(), cmd_split[1:], message, client
+                )
             except:
                 print("Error while handling message", flush=True)
                 raise
@@ -77,8 +82,34 @@ def main():
     async def on_message_edit(before, after):
         await common_handle_message(after)
 
+    @client.event
+    async def on_raw_reaction_add(payload):
+        if payload.message_id == settings.tourney_msg:
+            with open("players.txt", "a") as file:
+                file.write(f"{payload.member.id}\n")
+            await payload.member.send("Thanks for siging up to the tournament")
+
+    @client.event
+    async def on_raw_reaction_remove(payload):
+        if payload.message_id == settings.tourney_msg:
+            list_of_players = []
+            with open("players.txt", "r") as file:
+                for i in file:
+                    i = i.split("\n")[0]
+                    if i != str(payload.user_id):
+                        list_of_players.append(f"{i}\n")
+            with open("players.txt", "w") as file:
+                file.write("")
+            with open("players.txt", "a") as file:
+                for i in set(list_of_players):
+                    file.write(i)
+
+            user = await client.fetch_user(payload.user_id)
+            await user.send("You successfully left the tournament. Sorry to see you go")
+
     # Finally, set the bot running
     client.run(settings.BOT_TOKEN)
+
 
 ###############################################################################
 
