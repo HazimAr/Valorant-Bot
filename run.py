@@ -39,8 +39,7 @@ def main():
         # Set the playing status
         if settings.NOW_PLAYING:
             print("Setting NP game", flush=True)
-            await client.change_presence(
-                activity=discord.Game(name=settings.NOW_PLAYING))
+            await client.change_presence(activity=discord.Game(name=settings.NOW_PLAYING))
         print("Logged in!", flush=True)
 
         # Load all events
