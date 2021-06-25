@@ -1,8 +1,8 @@
 from commands.base_command import BaseCommand
 import utils
 
-class End(BaseCommand):
 
+class End(BaseCommand):
     def __init__(self):
         description = "Moves everyone from attacking and defending to lobby"
         params = None
@@ -10,4 +10,3 @@ class End(BaseCommand):
 
     async def handle(self, params, message, client):
         await utils.end(client)
-

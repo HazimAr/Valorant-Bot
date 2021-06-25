@@ -2,8 +2,8 @@ from commands.base_command import BaseCommand
 import random
 import utils
 
-class Teams(BaseCommand):
 
+class Teams(BaseCommand):
     def __init__(self):
         description = "This will randomize teams for the vc that you are in"
         params = None

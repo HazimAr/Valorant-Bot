@@ -3,8 +3,8 @@ import random
 from settings import ranks
 import utils
 
-class Check(BaseCommand):
 
+class Check(BaseCommand):
     def __init__(self):
         description = "Checks valorant stats"
         params = None
@@ -12,6 +12,7 @@ class Check(BaseCommand):
 
     async def handle(self, params, message, client):
         channel = message.channel
+
         def check(m):
             return m.author.id == message.author.id and m.channel == channel
 
@@ -22,7 +23,8 @@ class Check(BaseCommand):
         user_message = user.content
         print(user_message)
         try:
-            user = user_message.split("#")[0]; tag = user_message.split("#")[1]
+            user = user_message.split("#")[0]
+            tag = user_message.split("#")[1]
             print(user, tag)
         except:
             msg = "Please send the user in this format **username**#**tag**"

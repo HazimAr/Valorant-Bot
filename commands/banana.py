@@ -11,12 +11,11 @@ import discord
 
 # So, a command class named Random will generate a 'random' command
 class Banana(BaseCommand):
-
     def __init__(self):
         description = "Sends a banana emoji"
         params = []
         super().__init__(description, params)
 
     async def handle(self, params, message, client):
-        msg = get_emoji(':banana:')
+        msg = get_emoji(":banana:")
         await message.channel.send(msg)

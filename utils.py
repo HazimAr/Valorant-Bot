@@ -26,8 +26,7 @@ def get_rel_path(rel_path):
 # If fail_silently is True, it will not raise an exception
 # if the emoji is not found, it will return the input instead
 def get_emoji(emoji_name, fail_silently=False):
-    alias = emoji_name if emoji_name[0] == emoji_name[-1] == ":" \
-        else f":{emoji_name}:"
+    alias = emoji_name if emoji_name[0] == emoji_name[-1] == ":" else f":{emoji_name}:"
     the_emoji = emojize(alias, use_aliases=True)
 
     if the_emoji == alias and not fail_silently:
@@ -40,8 +39,14 @@ def get_emoji(emoji_name, fail_silently=False):
 # Uses the channel name by default
 # If many matching channels are found, returns the first one
 def get_channel(client, value, attribute="name"):
-    channel = next((c for c in client.get_all_channels()
-                    if getattr(c, attribute).lower() == value.lower()), None)
+    channel = next(
+        (
+            c
+            for c in client.get_all_channels()
+            if getattr(c, attribute).lower() == value.lower()
+        ),
+        None,
+    )
     if not channel:
         raise ValueError("No such channel")
     return channel
@@ -58,14 +63,15 @@ async def send_in_channel(client, channel_name, *args):
 # Attempts to upload a file in a certain channel
 # content refers to the additional text that can be sent alongside the file
 # delete_after_send can be set to True to delete the file afterwards
-async def try_upload_file(client, channel, file_path, content=None, delete_after_send=False, retries=3):
+async def try_upload_file(
+    client, channel, file_path, content=None, delete_after_send=False, retries=3
+):
     used_retries = 0
     sent_msg = None
 
     while not sent_msg and used_retries < retries:
         try:
-            sent_msg = await client.send_file(channel, file_path,
-                                              content=content)
+            sent_msg = await client.send_file(channel, file_path, content=content)
         except HTTPException:
             used_retries += 1
 
@@ -73,14 +79,17 @@ async def try_upload_file(client, channel, file_path, content=None, delete_after
         os.remove(file_path)
 
     if not sent_msg:
-        await client.send_message(channel,
-                                  "Oops, something happened. Please try again.")
+        await client.send_message(
+            channel, "Oops, something happened. Please try again."
+        )
     return sent_msg
+
 
 async def move_list_to_channel(player_list, channel, client):
     voice_channel = client.get_channel(channel)
     for i in player_list:
         await i.move_to(voice_channel)
+
 
 async def randomize_teams(message, client):
     try:
@@ -89,7 +98,7 @@ async def randomize_teams(message, client):
     except:
         msg = "You are currently not connected to a voice channel. To use this command please connect to a voice channel"
         return msg
-    
+
     team_one_choose = True
 
     team1 = []
@@ -122,9 +131,9 @@ async def randomize_teams(message, client):
                 team1.append(random1.mention)
                 team1_move.append(random1)
                 team_one_choose = True
-        
+
         players.remove(random1)
-    
+
     msg = f"You will be moved to your respected channels\n\nAttacking: {team1}\nDefending: {team2}"
 
     await move_list_to_channel(team1_move, settings.attacking, client)
@@ -132,11 +141,15 @@ async def randomize_teams(message, client):
 
     return msg
 
-def get_user_rank(user, tag):  
+
+def get_user_rank(user, tag):
     if settings.DEV:
         chrome_options = Options()
         chrome_options.add_argument("--headless")
-        driver = webdriver.Chrome(executable_path="D:/Code/Discord/Valorant-Bot/chromedriver", chrome_options=chrome_options)
+        driver = webdriver.Chrome(
+            executable_path="D:/Code/Discord/Valorant-Bot/chromedriver",
+            chrome_options=chrome_options,
+        )
     else:
         chrome_options = Options()
         chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -144,7 +157,10 @@ def get_user_rank(user, tag):
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--no-sandbox")
 
-        driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+        driver = webdriver.Chrome(
+            executable_path=os.environ.get("CHROMEDRIVER_PATH"),
+            chrome_options=chrome_options,
+        )
 
     web = f"https://tracker.gg/valorant/profile/riot/{user}%23{tag}/overview?playlist=competitive"
     driver.get(web)
@@ -158,20 +174,24 @@ def get_user_rank(user, tag):
     #     driver.find_element_by_xpath(xpath).send_keys(input)
 
     def Wait(time, xpath):
-        WebDriverWait(driver, time).until(EC.presence_of_element_located((By.XPATH, xpath)))
+        WebDriverWait(driver, time).until(
+            EC.presence_of_element_located((By.XPATH, xpath))
+        )
+
     try:
         Wait(5, rank_xpath)
     except:
         driver.quit()
         msg = f"{user+tag}'s account is private or has not yet played ranked\nIf you are the owner of this account and would like to make your account public please click here\nhttps://account.tracker.gg/auth/search?provider=riot&returnUrl=https://tracker.gg/auth/search/callback&state=valorant"
         return msg
-        
+
     rank = driver.find_element_by_xpath(rank_xpath).text
     driver.quit()
     # msg = settings.ranks[rank]
     msg = rank
 
     return msg
+
 
 async def end(client):
     lobby = client.get_channel(settings.lobby)
@@ -182,5 +202,3 @@ async def end(client):
         await i.move_to(lobby)
     for j in defending.members:
         await j.move_to(lobby)
-    
-
