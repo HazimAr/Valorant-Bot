@@ -223,9 +223,9 @@ starts_d = [
     ],
 ]
 
-lobby = 857501540474683396
-attacking = 857502728783396864
-defending = 857502754027864075
+lobby = 784171919347810310
+attacking = 784291924936228885
+defending = 784693175872651264
 
 agents = [
     "Astra",
