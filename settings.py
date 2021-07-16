@@ -39,6 +39,33 @@ ranks = {
     "Radiant": 1950,
 }
 
+lobby = 784171919347810310
+attacking = 784291924936228885
+defending = 784693175872651264
+
+agents = [
+    "Astra",
+    "Breach",
+    "Brimstone",
+    "Cypher",
+    "Jett",
+    "Kayo",
+    "Killjoy",
+    "Omen",
+    "Phoenix",
+    "Raze",
+    "Reyna",
+    "Sage",
+    "Skye",
+    "Sova",
+    "Viper",
+    "Yoru",
+]
+
+maps = ["Ascent‎", "Bind", "Haven", "Split", "Icebox", "Breeze"]
+
+tourney_msg = 857871348906065920
+
 starts_a = [
     [
         "Is this CS:GO???",
@@ -222,30 +249,3 @@ starts_d = [
         "You are only allowed to kill enemies through walls. You may peak them to see where they are, but to kill them, it must be through a wall. (credit: dehenergy)",
     ],
 ]
-
-lobby = 784171919347810310
-attacking = 784291924936228885
-defending = 784693175872651264
-
-agents = [
-    "Astra",
-    "Breach",
-    "Brimstone",
-    "Cypher",
-    "Jett",
-    "Kayo",
-    "Killjoy",
-    "Omen",
-    "Phoenix",
-    "Raze",
-    "Reyna",
-    "Sage",
-    "Skye",
-    "Sova",
-    "Viper",
-    "Yoru",
-]
-
-maps = ["Ascent‎", "Bind", "Haven", "Split", "Icebox", "Breeze"]
-
-tourney_msg = 857871348906065920
