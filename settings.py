@@ -65,6 +65,7 @@ agents = [
 maps = ["Ascent‎", "Bind", "Haven", "Split", "Icebox", "Breeze"]
 
 tourney_msg = 857871348906065920
+giveaway_msg = 865728149396783114
 
 starts_a = [
     [

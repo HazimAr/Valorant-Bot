@@ -88,6 +88,10 @@ def main():
             with open("players.txt", "a") as file:
                 file.write(f"{payload.member.id}\n")
             await payload.member.send("Thanks for siging up to the tournament")
+        elif payload.message_id == settings.giveaway_msg:
+            with open("giveaway.txt", "a") as file:
+                file.write(f"{payload.member.id}\n")
+            await payload.member.send("Thanks for siging up to the giveaway")
 
     @client.event
     async def on_raw_reaction_remove(payload):
@@ -106,6 +110,21 @@ def main():
 
             user = await client.fetch_user(payload.user_id)
             await user.send("You successfully left the tournament. Sorry to see you go")
+        elif payload.message_id == settings.giveaway_msg:
+            list_of_players = []
+            with open("giveaway.txt", "r") as file:
+                for i in file:
+                    i = i.split("\n")[0]
+                    if i != str(payload.user_id):
+                        list_of_players.append(f"{i}\n")
+            with open("giveaway.txt", "w") as file:
+                file.write("")
+            with open("giveaway.txt", "a") as file:
+                for i in set(list_of_players):
+                    file.write(i)
+
+            user = await client.fetch_user(payload.user_id)
+            await user.send("You successfully left the giveaway. Sorry to see you go")
 
     # Finally, set the bot running
     client.run(settings.BOT_TOKEN)
