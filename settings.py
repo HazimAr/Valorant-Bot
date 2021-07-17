@@ -40,8 +40,8 @@ ranks = {
 }
 
 lobby = 865842885558403072
-attacking = 784291924936228885
-defending = 784693175872651264
+attacking = 865842949706481664
+defending = 865842968803278868
 
 agents = [
     "Astra",
