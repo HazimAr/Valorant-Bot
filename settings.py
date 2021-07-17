@@ -39,7 +39,7 @@ ranks = {
     "Radiant": 1950,
 }
 
-lobby = 784171919347810310
+lobby = 865842885558403072
 attacking = 784291924936228885
 defending = 784693175872651264
 
@@ -65,7 +65,7 @@ agents = [
 maps = ["Ascent‎", "Bind", "Haven", "Split", "Icebox", "Breeze"]
 
 tourney_msg = 857871348906065920
-giveaway_msg = 865728149396783114
+giveaway_msg = 865841306952925184
 
 starts_a = [
     [
