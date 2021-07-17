@@ -87,7 +87,7 @@ async def try_upload_file(
 
 async def move_list_to_channel(player_list, channel, client):
     voice_channel = client.get_channel(channel)
-    if voice_channel.id == settings.lobby:
+    if voice_channel.id != settings.lobby:
         for i in player_list:
             await i.move_to(voice_channel)
         return True
