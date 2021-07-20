@@ -15,11 +15,9 @@ import random
 
 import settings
 
-
 # Returns a path relative to the bot directory
 def get_rel_path(rel_path):
     return join(settings.BASE_DIR, rel_path)
-
 
 # Returns an emoji as required to send it in a message
 # You can pass the emoji name with or without colons
@@ -33,7 +31,6 @@ def get_emoji(emoji_name, fail_silently=False):
         raise ValueError(f"Emoji {alias} not found!")
 
     return the_emoji
-
 
 # A shortcut to get a channel by a certain attribute
 # Uses the channel name by default
@@ -50,7 +47,6 @@ def get_channel(client, value, attribute="name"):
     if not channel:
         raise ValueError("No such channel")
     return channel
-
 
 # Shortcut method to send a message in a channel with a certain name
 # You can pass more positional arguments to send_message
